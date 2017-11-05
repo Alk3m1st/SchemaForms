@@ -1,4 +1,26 @@
 <h1>
   {{title}}
 </h1>
+
+<form [formGroup]="form"
+  (ngSubmit)="onSubmit(form)">
+
+  <div class="input">
+    <label
+      for="schema.fields[0].id">
+      {{schema.fields[0].label}}
+    </label>
+    <input
+      type="schema.fields[0].type"
+      id="schema.fields[0].id"
+      [formControl]="form.controls[schema.fields[0].name]" />
+  </div>
+
+  <p>Form value: {{ form.value | json }}</p>
+  <p>Form status: {{ form.status | json }}</p>
+
+  <button type="submit">Submit</button>
+
+</form>
+
 <router-outlet></router-outlet>
