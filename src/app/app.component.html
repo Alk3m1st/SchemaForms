@@ -2,19 +2,21 @@
   {{title}}
 </h1>
 
+<!-- Tab / Multipage Component (needed) -->
+
+<!-- Form Component (needed) -->
 <form [formGroup]="form"
   (ngSubmit)="onSubmit(form)">
 
-  <div class="input">
-    <label
-      for="schema.fields[0].id">
-      {{schema.fields[0].label}}
-    </label>
-    <input
-      type="schema.fields[0].type"
-      id="schema.fields[0].id"
-      [formControl]="form.controls[schema.fields[0].name]" />
-  </div>
+  <!-- Section Component (needed) -->
+
+  <!-- Informational / Tooltip Component (needed) -->
+  <!-- Field/Input Component (needed) -->
+  <field
+    *ngFor="let field of schema.fields"
+    [field]="field"
+    [form]="form">
+  </field>
 
   <p>Form value: {{ form.value | json }}</p>
   <p>Form status: {{ form.status | json }}</p>

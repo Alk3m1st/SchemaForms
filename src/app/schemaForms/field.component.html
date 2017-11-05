@@ -1,0 +1,32 @@
+<div class="input">
+  <label
+    for="field.id">
+    {{field.label}}
+  </label>
+
+  <select
+    *ngIf="field.type === 'select'"
+    id="field.id"
+    name="field.name"
+    [formControl]="form.controls[field.name]">
+    <option *ngFor="let option of field.options" [value]="option">{{option}}</option>
+  </select>
+
+  <textarea
+    *ngIf="field.type === 'textarea'"
+    id="{{field.id}}"
+    placeholder="{{field.placeholder}}"
+    [formControl]="form.controls[field.name]">
+  </textarea>
+
+  <input
+    *ngIf="field.type !== 'textarea'"
+    type="{{field.type}}"
+    id="{{field.id}}"
+    placeholder="{{field.placeholder}}"
+    [formControl]="form.controls[field.name]" />
+
+  <!-- TODO: Add validation markup -->
+  <!-- TODO: Add function-based values for select -->
+  <!-- TODO: Allow custom field/component injection? -->
+</div>

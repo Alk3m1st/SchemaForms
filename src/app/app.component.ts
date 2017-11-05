@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { /*FormBuilder,*/ FormGroup, FormControl } from '@angular/forms';
+import { /*FormBuilder,*/ FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -17,13 +17,22 @@ export class AppComponent implements OnInit {
         id: 'FirstName',
         name: 'FirstName',
         label: 'First Name',
+        placeholder: 'First name goes here...',
+        validators: [ Validators.required, Validators.minLength(2) ]
       },
       {
         type: 'text',
         id: 'LastName',
         name: 'LastName',
         label: 'Last Name',
-      }
+      },
+      {
+        type: 'textarea',
+        id: 'Description',
+        name: 'Description',
+        label: 'Description',
+        placeholder: 'Description here...'
+      },
     ],
     layout: [
       {
@@ -33,19 +42,20 @@ export class AppComponent implements OnInit {
   };
 
   constructor() {
-    // this.form = fb.group({
-    //   'thing': ['STUFF']
-    // });
-
     this.form = this.processSchema(this.schema);
   }
 
   processSchema(schema: any) : FormGroup {
     // Validate schema and throw console error if invalid?
-    var controls = {};
+    let controls = {};
+    let hasValidators = function(field: any) : boolean {
+      return field.validators && field.validators.length > 0;
+    }
 
     schema.fields.map(field => {
-      controls[field.name] = new FormControl();
+      hasValidators(field) ?
+        controls[field.name] = new FormControl(null, field.validators) :
+        controls[field.name] = new FormControl();
     });
 
     let fg = new FormGroup(controls);
