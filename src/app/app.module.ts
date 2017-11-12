@@ -6,11 +6,15 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FieldComponent } from './schemaForms/field.component';
+import { SFSectionComponent } from './schemaForms/section/sf-section.component';
+import { SfStepComponent } from './schemaForms/sf-step/sf-step.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FieldComponent
+    FieldComponent,
+    SFSectionComponent,
+    SfStepComponent
   ],
   imports: [
     BrowserModule,
