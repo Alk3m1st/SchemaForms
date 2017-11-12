@@ -4,18 +4,18 @@
     *ngIf="field.type === 'section'">
     <legend>{{field.legend}}</legend>
 
-    <field
+    <sf-field
       *ngFor="let field of field.fields"
       [field]="field"
       [form]="form">
-    </field>
+    </sf-field>
   </fieldset>
 
-  <field
+  <sf-field
     *ngIf="field.type !== 'section'"
     [field]="field"
     [form]="form">
-  </field>
+  </sf-field>
 <!-- </ng-template> -->
 
 <!-- Informational / Tooltip Component (needed) -->
