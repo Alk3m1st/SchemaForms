@@ -1,0 +1,21 @@
+<!-- <ng-template
+  ngFor let-field [ngForOf]="fields"> -->
+  <fieldset
+    *ngIf="field.type === 'section'">
+    <legend>{{field.legend}}</legend>
+
+    <field
+      *ngFor="let field of field.fields"
+      [field]="field"
+      [form]="form">
+    </field>
+  </fieldset>
+
+  <field
+    *ngIf="field.type !== 'section'"
+    [field]="field"
+    [form]="form">
+  </field>
+<!-- </ng-template> -->
+
+<!-- Informational / Tooltip Component (needed) -->
