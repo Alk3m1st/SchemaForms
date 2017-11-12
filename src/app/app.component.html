@@ -6,17 +6,18 @@
 
 <!-- Form Component (needed) -->
 <form [formGroup]="form"
-  (ngSubmit)="onSubmit(form)">
+  (ngSubmit)="onSubmit(form)"
+  novalidate>
 
-  <!-- Section Component (needed) -->
-
-  <!-- Informational / Tooltip Component (needed) -->
-  <!-- Field/Input Component (needed) -->
-  <field
-    *ngFor="let field of schema.fields"
-    [field]="field"
+  <sf-step
+    [fields]="schema.fields"
     [form]="form">
-  </field>
+  </sf-step>
+
+  <!-- <sf-section
+    [fields]="schema.fields"
+    [form]="form">
+  </sf-section> -->
 
   <p>Form value: {{ form.value | json }}</p>
   <p>Form status: {{ form.status | json }}</p>
