@@ -1,5 +1,10 @@
 <div class="input">
+  <!-- Info / Tooltip -->
+  <!-- TODO: Polymorphic? -->
+  <p>{{field.type}}</p>
+
   <label
+    *ngIf="field.type !== 'section' && field.type !== 'step'"
     for="field.id">
     {{field.label}}
   </label>
@@ -20,13 +25,16 @@
   </textarea>
 
   <input
-    *ngIf="field.type !== 'textarea'"
+    *ngIf="field.type === 'text'"
     type="{{field.type}}"
     id="{{field.id}}"
     placeholder="{{field.placeholder}}"
     [formControl]="form.controls[field.name]" />
 
-  <!-- TODO: Add validation markup -->
+  <p *ngIf="form.controls[field.name].errors">This field has errors...</p>
+  <p *ngIf="form.controls[field.name].hasError('required') && form.controls[field.name].touched">This field is required</p>
+  <!-- <p *ngIf="form.controls[field.name].hasError('minLength') && form.controls[field.name].touched">This field has a minimum length of {{field.validators.find(validator => validator.type === 'minLength').value}}</p> -->
+
   <!-- TODO: Add function-based values for select -->
   <!-- TODO: Allow custom field/component injection? -->
 </div>
