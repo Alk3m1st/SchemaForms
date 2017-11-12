@@ -1,0 +1,31 @@
+<ng-template
+  ngFor let-field [ngForOf]="fields">
+
+  <div *ngIf="field.type === 'step'">
+    <h2>{{field.title}} .. testing</h2>
+    <div>
+      <p [innerHTML]="field.description"></p>
+
+      <sf-section
+        *ngFor="let field of field.fields"
+        [field]="field"
+        [form]="form">
+      </sf-section>
+    </div>
+  </div>
+
+  <hr />
+
+  <sf-section
+    *ngIf="field.type === 'section'"
+    [field]="field"
+    [form]="form">
+  </sf-section>
+
+  <field
+    *ngIf="field.type !== 'section' && field.type !== 'step'"
+    [field]="field"
+    [form]="form">
+  </field>
+
+</ng-template>
