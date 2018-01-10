@@ -1,40 +1,63 @@
-<div class="input">
+<div class="form-group row">
   <!-- Info / Tooltip -->
   <!-- TODO: Polymorphic? -->
-  <p>{{field.type}}</p>
+  <!-- <p>{{field.type}}</p> -->
 
-  <label
-    *ngIf="field.type !== 'section' && field.type !== 'step'"
-    for="field.id">
-    {{field.label}}
-  </label>
+  <div class="col-sm-2">
+    <label
+      *ngIf="field.type !== 'section' && field.type !== 'step'"
+      for="{{field.id}}">
+      {{field.label}}
+    </label>
+  </div>
 
-  <select
-    *ngIf="field.type === 'select'"
-    id="field.id"
-    name="field.name"
-    [formControl]="form.controls[field.name]">
-    <option *ngFor="let option of field.options" [value]="option">{{option}}</option>
-  </select>
+  <div class="col-sm-10">
+    <!-- multiple select too? i.e. If type === multiple -->
+    <select
+      *ngIf="field.type === 'select'"
+      id="{{field.id}}"
+      name="{{field.name}}"
+      class="form-control"
+      [formControl]="form.controls[field.name]">
+      <option *ngFor="let option of field.options" [value]="option">{{option}}</option>
+    </select>
 
-  <textarea
-    *ngIf="field.type === 'textarea'"
-    id="{{field.id}}"
-    placeholder="{{field.placeholder}}"
-    [formControl]="form.controls[field.name]">
-  </textarea>
+    <textarea
+      *ngIf="field.type === 'textarea'"
+      id="{{field.id}}"
+      placeholder="{{field.placeholder}}"
+      class="form-control"
+      [formControl]="form.controls[field.name]">
+    </textarea>
 
-  <input
-    *ngIf="field.type === 'text'"
-    type="{{field.type}}"
-    id="{{field.id}}"
-    placeholder="{{field.placeholder}}"
-    [formControl]="form.controls[field.name]" />
+    <input
+      *ngIf="field.type === 'text'"
+      type="{{field.type}}"
+      id="{{field.id}}"
+      placeholder="{{field.placeholder}}"
+      class="form-control"
+      [formControl]="form.controls[field.name]" />
 
-  <p *ngIf="form.controls[field.name].errors">This field has errors...</p>
-  <p *ngIf="form.controls[field.name].hasError('required') && form.controls[field.name].touched">This field is required</p>
-  <!-- <p *ngIf="form.controls[field.name].hasError('minLength') && form.controls[field.name].touched">This field has a minimum length of {{field.validators.find(validator => validator.type === 'minLength').value}}</p> -->
+    <!-- email -->
+    <!-- number -->
+    <!-- file -->
+    <!-- password -->
+    <!-- checkboxes -->
+    <!-- date -->
 
-  <!-- TODO: Add function-based values for select -->
-  <!-- TODO: Allow custom field/component injection? -->
+    <div
+      *ngIf="form.controls[field.name].errors"
+      class="alert alert-danger"
+      role="alert">
+      This field has errors...
+    </div>
+    <p *ngIf="form.controls[field.name].hasError('required') && form.controls[field.name].touched">This field is required</p>
+    <!-- <p *ngIf="form.controls[field.name].hasError('minLength') && form.controls[field.name].touched">This field has a minimum length of {{field.validators.find(validator => validator.type === 'minLength').value}}</p> -->
+
+    <!-- help text -->
+    <!-- disabled fields -->
+
+    <!-- TODO: Add function-based values for select -->
+    <!-- TODO: Allow custom field/component injection? -->
+  </div>
 </div>
