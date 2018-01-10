@@ -13,6 +13,33 @@ export class AppComponent implements OnInit {
   schema = {
     fields: [
       {
+        type: 'step',
+        title: 'Step 1 - Personal Details',
+        description: '<strong>Fill in you details here</strong>',
+        // showProgress:
+        // validateEachStep:
+        fields: [
+          {
+            type: 'section',
+            legend: 'More Address Details',
+            fields: [
+              {
+                type: 'text',
+                id: 'MoreFirstName',
+                name: 'MoreFirstName',
+                label: 'More First Name',
+              }
+            ],
+          },
+          {
+            type: 'textarea',
+            id: 'AnotherTextArea',
+            name: 'AnotherTextArea',
+            label: 'Another Text Area',
+          }
+        ],
+      },
+      {
         type: 'section',
         legend: 'Address Details',
         fields: [
@@ -57,33 +84,6 @@ export class AppComponent implements OnInit {
         label: 'Select Dropdown',
         options: ['Option1','Option2','Option3'],
       },
-      {
-        type: 'step',
-        title: 'Step 1 - Personal Details',
-        description: '<strong>Fill in you details here</strong>',
-        // showProgress:
-        // validateEachStep:
-        fields: [
-          {
-            type: 'section',
-            legend: 'More Address Details',
-            fields: [
-              {
-                type: 'text',
-                id: 'MoreFirstName',
-                name: 'MoreFirstName',
-                label: 'More First Name',
-              }
-            ],
-          },
-          {
-            type: 'textarea',
-            id: 'AnotherTextArea',
-            name: 'AnotherTextArea',
-            label: 'Another Text Area',
-          }
-        ],
-      },
     ],
     layout: [
       {
@@ -112,8 +112,8 @@ export class AppComponent implements OnInit {
 
   mapFields(fields: any[], controls: object) {
     fields.map(field => {
-      console.log(field);
-      console.log(field.fields !== undefined);
+      // console.log(field);
+      // console.log(field.fields !== undefined);
 
       if(field.fields !== undefined && field.fields.length !== 0)
         this.mapFields(field.fields, controls);
