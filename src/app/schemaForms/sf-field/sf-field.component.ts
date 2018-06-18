@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./sf-field.component.scss']
 })
 
-export class FieldComponent {
+export class SfFieldComponent {
   @Input() field: any;
   @Input() form: FormGroup;
 }
