@@ -12,7 +12,9 @@
   },
   "jest": {
     "preset": "jest-preset-angular",
-    "roots": [ "<rootDir>/src/" ],
+    "roots": [
+      "<rootDir>/src/"
+    ],
     "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts"
   },
   "private": true,
@@ -26,11 +28,12 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "core-js": "^2.4.1",
+    "npm": "^6.1.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.1",
+    "@angular/cli": "1.7.3",
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
     "@types/jest": "^22.0.1",
